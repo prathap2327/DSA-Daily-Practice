@@ -4,7 +4,7 @@
 
 ---
 
-## 📌 Topic of the Day
+## 📌 Topic of the Day : BUBBLE SORT AND BINARY SEARCH PROBLEMS
 
 Two things today:
 1. **Revise** — 5 harder binary search problems (rotated arrays, single element)
