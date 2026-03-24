@@ -158,7 +158,7 @@ All problems this week are on LeetCode. Open each one, read the examples, then c
 > ```python
 > return max(sum(row) for row in accounts)
 > ```
-
+     ->>>>>>  2D array 
 ---
 
 **Q5. Shuffle the Array** — [LC #1470](https://leetcode.com/problems/shuffle-the-array/) `Easy`
