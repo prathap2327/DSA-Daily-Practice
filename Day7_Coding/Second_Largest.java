@@ -2,7 +2,7 @@ package Day7_Coding;
 
 public class Second_Largest {
     public static void main(String[] args) {
-        int[] arr = {5, 2, 9, 1, 5, 6};
+        int[] arr = {5};
         int secondLargest = findSecondLargest(arr);
         System.out.println("The second largest element in the array is: " + secondLargest);
     }
