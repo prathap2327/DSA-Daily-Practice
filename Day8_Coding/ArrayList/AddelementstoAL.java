@@ -18,5 +18,7 @@ public class AddelementstoAL {
         names.get(1);
         System.out.println(names.size());
         System.out.println(names.remove(0));
+        names.set(0, "Hales");
+        System.out.println(names);
     }
 }
