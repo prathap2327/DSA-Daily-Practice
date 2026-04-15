@@ -9,5 +9,14 @@ public class AddelementstoAL {
         numbers.add(20);
         numbers.add(30);
         System.out.println(numbers);
+
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        System.out.println(names);
+        names.get(1);
+        System.out.println(names.size());
+        System.out.println(names.remove(0));
     }
 }
