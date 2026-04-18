@@ -24,5 +24,10 @@ public class TwoDAL {
         list2D.add(A3);
 
         System.out.println(list2D);
+
+        System.out.println(list2D.get(0).get(1));
+        System.out.println(list2D.get(1).get(0));
+        System.out.println(list2D.get(2));
+        System.out.println(list2D.get(0).size());
     }
 }
