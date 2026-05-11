@@ -1,7 +1,6 @@
 package Streams;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Greater10 {
     public static void main(String[] args) {
