@@ -7,6 +7,9 @@ public class LongestString {
     public static String findLongestString(String[] strings) {
         return Arrays.stream(strings)
                 .reduce("", (a, b) -> a.length() > b.length() ? a : b);
+                // 		String longest = words.stream().max(Comparator.comparingInt(String::length))
+ // 		                .orElse("");
+ //		               return longest;
     }
     public static void main(String[] args) {
         String[] strings = {"apple", "banana", "pear", "kiwi", "grape"};
