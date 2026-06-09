@@ -26,7 +26,7 @@ public class oddSum {
         //     ans%=MOD;
         // }
         // return (int)ans;
-        int[] arr = {2,4,6};
+        
 		int N = arr.length;
 		int[] pfsum = new int[N+1];
 		pfsum[0] =0;
@@ -52,7 +52,7 @@ public class oddSum {
 		        even++;
 		    }
 		}
-		System.out.println(ans);
+		return ans;
     }
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5};
