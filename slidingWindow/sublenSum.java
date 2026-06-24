@@ -1,4 +1,4 @@
-package slidingWindow;
+
 
 public class sublenSum {
     public static int solve(int[] A, int B, int C) {

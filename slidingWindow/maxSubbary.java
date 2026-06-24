@@ -1,4 +1,4 @@
-package slidingWindow;
+
 
 public class maxSubbary {
     public static int maxSubarray(int A, int B, int[] C) {

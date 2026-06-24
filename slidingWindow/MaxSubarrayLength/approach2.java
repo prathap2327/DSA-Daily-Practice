@@ -1,4 +1,4 @@
-package slidingWindow.MaxSubarrayLength;
+package MaxSubarrayLength;
 
 public class approach2 {
     public static void main(String[] args) {
