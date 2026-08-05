@@ -31,6 +31,10 @@ public class Employee2 {
         return dept;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
     @Override
     public String toString() {
         // Formats salary into the "k" abbreviation (e.g., 85000 -> 85k)
@@ -57,10 +61,14 @@ public class Employee2 {
         employees.add(new Employee2(9, "Ivy", "Engineering", "SF", 95000, 33, 'F', 2014));
         
         // 1. Filter out the Engineering employees
-        List<Employee2> engineeringEmployees = employees.stream()
-            .filter(e -> e.getDept().equals("Engineering"))
-            .collect(Collectors.toList());
+        // List<Employee2> engineeringEmployees = employees.stream()
+        //     .filter(e -> e.getDept().equals("Engineering"))
+        //     .collect(Collectors.toList());
 
+        //2. Filter employees with salary greater than 70k
+        List<Employee2> engineeringEmployees = employees.stream()
+            .filter(e -> e.getSalary() > 70000) 
+            .collect(Collectors.toList());
         // 2. Print the list to the console
         System.out.println(engineeringEmployees);
 	}
