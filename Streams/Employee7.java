@@ -75,11 +75,18 @@ public class Employee7 {
         employees.add(new Employee7(10,"Jack", "Marketing", "NYC", 64000, 27, 'M', 2022));
         
         List<Employee7> filteredEmployee=employees.stream().filter(e-> e.getYear()>2018).collect(Collectors.toList());
-        List<String> filteredEmployees=employees.stream().map(e->e.getName()).collect(Collectors.toList());
-        List<String> filteredEmployees1=employees.stream().map(e->e.getDept()).distinct().collect(Collectors.toList());
+        List<String> filteredEmployees=employees.stream().map(Employee7::getName).collect(Collectors.toList());
+        List<String> filteredEmployees1=employees.stream().map(Employee7::getDept).distinct().collect(Collectors.toList());
+        List<String> filteredEmployees2=employees.stream().map(Employee7::getName).map(String::toUpperCase).collect(Collectors.toList());
+        List<Double> raisedEmployees = employees.stream()
+                                            .map(Employee7::getSalary)
+                                            .map(salary -> salary * 1.10)
+                                            .collect(Collectors.toList());
        System.out.println(filteredEmployees);
        System.out.println(filteredEmployee);
        System.out.println(filteredEmployees1);
+       System.out.println(filteredEmployees2);
+         System.out.println(raisedEmployees);
 	}
 }
 
