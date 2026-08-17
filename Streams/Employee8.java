@@ -58,8 +58,19 @@ public class Employee8 {
     
     @Override
     public String toString() {
-        String salaryInK = (salary / 1000) + "k"; 
-        return name + "(" + salaryInK + ")" + "->";
+        //  String shortDept = dept;
+        // if (dept.equals("Engineering")) {
+        //     shortDept = "Eng";
+        // } else if (dept.equals("Marketing")) {
+        //     shortDept = "Mkt";
+        // }
+        // else if (dept.equals("HR")) {
+        //     shortDept = "HR";
+        // }
+        // String salaryInK = (salary / 1000) + "k"; 
+        // return shortDept + ":" + name + "(" + salaryInK + ")" + "->";
+        //return name + "(" + age + ")";
+        return name + "(" + yearOfJoining + ")";
     }
 
     public static void main(String[] args) {
@@ -76,9 +87,15 @@ public class Employee8 {
         employees.add(new Employee8(9, "Ivy", "Engineering", "SF", 95000, 33, 'F', 2014));
         employees.add(new Employee8(10,"Jack", "Marketing", "NYC", 64000, 27, 'M', 2022));
         
-        List<Employee8> asc=employees.stream().sorted(Comparator.comparingInt(Employee8::getSalary)).collect(Collectors.toList());
-        System.out.println(asc);
-        List<Employee8> des=employees.stream().sorted(Comparator.comparingInt(Employee8::getSalary).reversed()).collect(Collectors.toList());
-        System.out.println(des);
+        // List<Employee8> asc=employees.stream().sorted(Comparator.comparingInt(Employee8::getSalary)).collect(Collectors.toList());
+        // System.out.println(asc);
+        // List<Employee8> des=employees.stream().sorted(Comparator.comparingInt(Employee8::getSalary).reversed()).collect(Collectors.toList());
+        // System.out.println(des);
+        // List<Employee8> asc1 = employees.stream().sorted(Comparator.comparing(Employee8::getDept).thenComparing(Employee8::getSalary)).collect(Collectors.toList());
+        // System.out.println(asc1);
+        // List<Employee8> des1 = employees.stream().sorted(Comparator.comparing(Employee8::getAge).reversed().thenComparing(Employee8::getName)).collect(Collectors.toList());
+        // System.out.println(des1);
+        List<Employee8> asc2 = employees.stream().sorted(Comparator.comparingInt(Employee8::getYear)).collect(Collectors.toList());
+        System.out.println(asc2);
 	}
 }
