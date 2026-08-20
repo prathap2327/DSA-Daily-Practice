@@ -3,7 +3,7 @@ package Streams;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class Employee9 {
      private int id;
@@ -70,7 +70,8 @@ public class Employee9 {
         // String salaryInK = (salary / 1000) + "k"; 
         // return shortDept + ":" + name + "(" + salaryInK + ")" + "->";
         //return name + "(" + age + ")";
-        return name + "(" + yearOfJoining + ")";
+        //return name + "(" + yearOfJoining + ")";
+        return "Optional" + "(" + name + "," + dept + "," + city + "," + salary + ")";
     }
 
     public static void main(String[] args) {
@@ -91,5 +92,9 @@ public class Employee9 {
         System.out.println("Total Salary: " + total);
         double avg = employees.stream().mapToDouble(Employee9::getSalary).average().orElse(0.0);
         System.out.println("Average Salary: " + avg);
+         Employee9 maximum = employees.stream().max(Comparator.comparingInt(Employee9::getSalary)).orElse(null);
+        System.out.println(maximum);
+        int max = employees.stream().mapToInt(Employee9::getSalary).max().orElse(0);
+        System.out.println(max);
 	}
 }
