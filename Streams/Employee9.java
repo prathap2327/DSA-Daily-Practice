@@ -2,6 +2,7 @@ package Streams;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 
 
@@ -75,7 +76,7 @@ public class Employee9 {
     }
 
     public static void main(String[] args) {
-		
+		int N =3;
 		List<Employee9> employees = new ArrayList<>();
 		employees.add(new Employee9(1, "Alice", "Engineering", "NYC", 85000, 28, 'F', 2019));
 		employees.add(new Employee9(2, "Bob", "Engineering", "SF", 92000, 35, 'M', 2016));
@@ -96,5 +97,13 @@ public class Employee9 {
         System.out.println(maximum);
         int max = employees.stream().mapToInt(Employee9::getSalary).max().orElse(0);
         System.out.println(max);
+        Employee9 minimum = employees.stream().min(Comparator.comparingInt(Employee9::getSalary)).orElse(null);
+        System.out.println(minimum);
+        Employee9 secondMinimum = employees.stream().distinct().sorted(Comparator.comparingInt(Employee9::getSalary).reversed()).skip(1).findFirst().orElse(null);
+        System.out.println(secondMinimum);
+        IntSummaryStatistics stats= employees.stream().mapToInt(Employee9::getSalary).summaryStatistics();
+        System.out.println(stats);
+        Employee9 Nthnum = employees.stream().distinct().sorted(Comparator.comparingInt(Employee9::getSalary).reversed()).skip(N - 1).findFirst().orElse(null);
+        System.out.println(Nthnum);
 	}
 }
