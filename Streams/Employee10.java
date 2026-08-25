@@ -71,7 +71,7 @@ public class Employee10 {
         // return shortDept + ":" + name + "(" + salaryInK + ")" + "->";
         //return name + "(" + age + ")";
         //return name + "(" + yearOfJoining + ")";
-        return "Optional" + "(" + name + "," + dept + "," + city + "," + salary + ")";
+        return  dept + "->" + name + "(" + salary + ")";
     }
 
     public static void main(String[] args) {
@@ -94,7 +94,33 @@ public class Employee10 {
 	
          Map<String,Long> countByDept = employees.stream().collect(Collectors.groupingBy(Employee10::getDept,Collectors.counting()));
         
+         Map<String,Long> SalSumByDept = employees.stream().collect(Collectors.groupingBy(Employee10::getDept,Collectors.summingLong(Employee10::getSalary)));
+        
+         Map<String,Double> SalAvgByDept = employees.stream().collect(Collectors.groupingBy(Employee10::getDept,Collectors.averagingDouble(Employee10::getSalary)));
+        Map<String,Optional<Employee10>> maxSalByDept = employees.stream().collect(Collectors.groupingBy(Employee10::getDept,Collectors.maxBy(Comparator.comparingInt(Employee10::getSalary))));
+        Map<Boolean,List<String>> partitionedData=employees.stream().collect(Collectors.partitioningBy(e->e.getSalary()>70000,Collectors.mapping(Employee10::getName,Collectors.toList())));
+        
+        String formattedPartition = partitionedData.entrySet().stream()
+    .map(entry -> entry.getKey() + "→" + entry.getValue())
+    .collect(Collectors.joining(", ", "{", "}"));
+
+System.out.println(formattedPartition);
+
+        Map<Character,Long> countBygender = employees.stream().collect(Collectors.groupingBy(Employee10::getGender,Collectors.counting()));
+        System.out.println(countBygender);
+
+        Map<String,Map<String,List<String>>> groupedByDeptAndCity = employees.stream()
+    .collect(Collectors.groupingBy(Employee10::getDept,
+        Collectors.groupingBy(Employee10::getCity,
+            Collectors.mapping(Employee10::getName, Collectors.toList())
+        )
+    ))  ;
+             
         System.out.println(namesByDept);
         System.out.println(countByDept);
+        System.out.println(SalSumByDept);
+        System.out.println(SalAvgByDept);
+        System.out.println(maxSalByDept);
+        System.out.println(groupedByDeptAndCity);
     }
 }
