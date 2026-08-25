@@ -2,8 +2,6 @@ package Streams;
 
 
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -94,6 +92,9 @@ public class Employee10 {
         
         Map<String,List<String>> namesByDept = employees.stream().collect(Collectors.groupingBy(Employee10::getDept,Collectors.mapping(Employee10::getName,Collectors.toList())));
 	
+         Map<String,Long> countByDept = employees.stream().collect(Collectors.groupingBy(Employee10::getDept,Collectors.counting()));
+        
         System.out.println(namesByDept);
+        System.out.println(countByDept);
     }
 }
