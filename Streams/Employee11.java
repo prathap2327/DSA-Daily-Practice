@@ -98,5 +98,8 @@ public class Employee11 {
 
         Map<Integer, Employee11> idToEmployee = employees.stream().collect(Collectors.toMap(Employee11::getId, Function.identity()));
         System.out.println(idToEmployee);
-    }
+
+       String names =  employees.stream().map(Employee11::getName).collect(Collectors.joining(", "));
+       System.out.println(names);
+}
 }
