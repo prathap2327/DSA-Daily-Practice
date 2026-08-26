@@ -101,5 +101,8 @@ public class Employee11 {
 
        String names =  employees.stream().map(Employee11::getName).collect(Collectors.joining(", "));
        System.out.println(names);
+
+       Map<String, Integer> deptToSalary = employees.stream().collect(Collectors.toMap(Employee11::getDept, Employee11::getSalary, Integer::sum));
+       System.out.println(deptToSalary);
 }
 }
