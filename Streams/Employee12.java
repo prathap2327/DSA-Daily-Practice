@@ -93,6 +93,11 @@ public class Employee12 {
                .findFirst()
                .orElse(null);
        System.out.println(highest);
+
+       List<Employee12> highestsal= employees.stream().sorted(Comparator.comparingInt(Employee12::getSalary).reversed()).limit(3).collect(Collectors.toList());
+      System.out.println(highestsal);
+      List<Integer> sal= employees.stream().map(Employee12::getSalary).distinct().sorted().collect(Collectors.toList());
+      System.out.println(sal);
 }
 }
 
