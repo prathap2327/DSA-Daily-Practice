@@ -87,5 +87,9 @@ private int id;
                 System.out.println("Department: " + maxEmployeesDept.getKey() + 
                    " with " + maxEmployeesDept.getValue() + " employees.");
                    
+    Map<String,Double> avgdept = employees.stream().collect(Collectors.groupingBy(Employee13::getDept,Collectors.averagingDouble(Employee13::getSalary)));
+      
+      List<Employee13> result = employees.stream().filter(e->e.getSalary()> avgdept.get(e.getDept())).collect(Collectors.toList());
+      System.out.println(result);
 }
 }
