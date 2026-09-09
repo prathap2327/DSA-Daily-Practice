@@ -1,8 +1,10 @@
 package Streams;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Employee13 {
@@ -62,7 +64,7 @@ private int id;
     @Override
     public String toString() {
         
-        return name + "," + salary;
+        return name + "," + age;
     }
 
     public static void main(String[] args) {
@@ -81,15 +83,28 @@ private int id;
 
         
       
-       Map.Entry<String, Long> maxEmployeesDept = employees.stream().collect(Collectors.groupingBy(Employee13::getDept,Collectors.counting()))
-                .entrySet().stream().max(Map.Entry.comparingByValue()).orElseThrow();
+    //    Map.Entry<String, Long> maxEmployeesDept = employees.stream().collect(Collectors.groupingBy(Employee13::getDept,Collectors.counting()))
+    //             .entrySet().stream().max(Map.Entry.comparingByValue()).orElseThrow();
                 
-                System.out.println("Department: " + maxEmployeesDept.getKey() + 
-                   " with " + maxEmployeesDept.getValue() + " employees.");
+    //             System.out.println("Department: " + maxEmployeesDept.getKey() + 
+    //                " with " + maxEmployeesDept.getValue() + " employees.");
                    
-    Map<String,Double> avgdept = employees.stream().collect(Collectors.groupingBy(Employee13::getDept,Collectors.averagingDouble(Employee13::getSalary)));
+    // Map<String,Double> avgdept = employees.stream().collect(Collectors.groupingBy(Employee13::getDept,Collectors.averagingDouble(Employee13::getSalary)));
       
-      List<Employee13> result = employees.stream().filter(e->e.getSalary()> avgdept.get(e.getDept())).collect(Collectors.toList());
-      System.out.println(result);
+    //   List<Employee13> result = employees.stream().filter(e->e.getSalary()> avgdept.get(e.getDept())).collect(Collectors.toList());
+    //   System.out.println(result);
+
+      Map<String,Optional<Employee13>> oldByDept = employees.stream().collect(Collectors.groupingBy(Employee13::getDept,Collectors.maxBy(Comparator.comparingInt(Employee13::getAge))));
+      System.out.println(oldByDept);
+      
+      Map<String, Employee13> oldestByDept = employees.stream()
+    .collect(Collectors.groupingBy(
+        Employee13::getDept,
+        Collectors.collectingAndThen(
+            Collectors.maxBy(Comparator.comparingInt(Employee13::getAge)),
+            Optional::orElseThrow
+        )
+    ));
+    System.out.println(oldestByDept);
 }
 }
