@@ -106,5 +106,29 @@ private int id;
         )
     ));
     System.out.println(oldestByDept);
+
+    Map<String, List<String>> result = employees.stream()
+            .collect(Collectors.groupingBy(
+                emp -> {
+                    if (emp.getSalary() >= 50000 && emp.getSalary() < 70000) {
+                        return "50k–70k";
+                    } else if (emp.getSalary() >= 70000 && emp.getSalary() < 90000) {
+                        return "70k–90k";
+                    } else if (emp.getSalary() >= 90000) {
+                        return "90k+";
+                    } else {
+                        return "Under 50k";
+                    }
+                },
+                Collectors.mapping(Employee13::getName, Collectors.toList())
+            ));
+
+        // Format and print to match your exact output layout
+        String output = result.entrySet().stream()
+            .map(entry -> entry.getKey() + " → " + entry.getValue())
+            .collect(Collectors.joining(" | "));
+
+        System.out.println(output);
+	
 }
 }
